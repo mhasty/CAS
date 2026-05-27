@@ -1,0 +1,7 @@
+import { BrainCircuit, History, LockKeyhole, Scale } from "lucide-react";
+import { AppShell } from "@/components/layout/app-shell";
+import { ReviewFindings } from "@/components/review/review-findings";
+import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata = { title: "Appraisal Review Engine", description: "Pre-submit appraisal review, XML/PDF cross-checking, rule packs, and audit history." };
+export default function ReviewPage() { return <AppShell title="Embedded Review Engine"><div className="grid gap-6 xl:grid-cols-[1.1fr_.9fr]"><ReviewFindings/><Card><CardContent className="p-6"><h3 className="font-semibold">Review score</h3><div className="mt-5 rounded-3xl bg-slate-950 p-6 text-white"><p className="text-sm text-slate-300">Submission readiness</p><p className="mt-2 text-5xl font-semibold">82</p><p className="mt-2 text-sm text-slate-300">Needs reviewer action before final delivery.</p></div><div className="mt-5 space-y-3">{[[Scale,'Compliance rules','GSE, lender, AMC, Caarps overlays'],[BrainCircuit,'Automated analysis','Narrative, consistency, comp support'],[LockKeyhole,'Controlled disclosure','User sees Caarps Review Engine, not raw AI prompts'],[History,'Audit history','Findings, overrides, and edits are preserved']].map(([Icon,t,b]) => <div key={String(t)} className="flex gap-3 rounded-2xl border border-slate-200 p-4"><Icon size={18}/><div><p className="text-sm font-medium">{String(t)}</p><p className="text-xs text-slate-500">{String(b)}</p></div></div>)}</div></CardContent></Card></div></AppShell>; }
